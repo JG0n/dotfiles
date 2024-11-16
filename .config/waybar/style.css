@@ -1,0 +1,165 @@
+@import "themes/catppuccin/mocha.css";
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px 5px;
+}
+
+/*#workspaces {*/
+/*  border-radius: 1rem;*/
+/*  margin: 5px;*/
+/*  background-color: @surface0;*/
+/*  margin-left: 1rem;*/
+/*}*/
+/**/
+/*#workspaces button {*/
+/*  color: @lavender;*/
+/*  border-radius: 1rem;*/
+/*  padding: 0.4rem;*/
+/*}*/
+/**/
+/*#workspaces button.active {*/
+/*  color: @sky;*/
+/*  border-radius: 1rem;*/
+/*}*/
+/**/
+/*#workspaces button:hover {*/
+/*  color: @sapphire;*/
+/*  border-radius: 1rem;*/
+/*}*/
+
+
+#workspaces {
+    background: @surface0;
+    margin: 5px 1px 6px 1px;
+    /*padding: 0px 1px;*/
+    padding: 0.1rem 1rem;
+    /*border-radius: 15px;*/
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 0.8;
+    /*font-size: 16px;*/
+    color: @text;
+    margin-left: 1rem;
+}
+
+#workspaces button {
+    padding: 0.1rem 1rem;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: @text;
+    background-color: @surface1;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: @text;
+    background: @surface1;
+    border-radius: 15px;
+    min-width: 20px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: @surface1;
+    border-radius: 15px;
+    opacity:0.7;
+}
+
+
+#custom-music,
+#tray,
+#backlight,
+#custom-ddcutil,
+#bluetooth,
+#clock,
+#pulseaudio,
+#custom-notification,
+#custom-lock,
+#custom-power,
+#network {
+  background-color: @surface0;
+  padding: 0.1rem 1rem;
+  margin: 5px 0;
+}
+
+
+#pulseaudio {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
+#clock {
+  color: @blue;
+}
+
+#bluetooth {
+  color: @sky;
+}
+
+#custom-notification {
+  color: @lavender;
+  border-radius: 0rem 1rem 1rem 0rem;
+  margin-right: 1rem;
+}
+
+#network {
+  color: @teal;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight,
+#custom-ddcutil{
+  color: @yellow;
+}
+
+#backlight, 
+#battery,
+#custom-ddcutil {
+    border-radius: 0;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#custom-lock {
+    border-radius: 1rem 0px 0px 1rem;
+    color: @lavender;
+}
+
+#custom-power {
+    margin-right: 1rem;
+    border-radius: 0px 1rem 1rem 0px;
+    color: @red;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
