@@ -3,4 +3,5 @@ These are the dotfiles for my system
 
 ## Thanks
 
-My hyprland dot files started off as a copy of [ML4W](https://github.com/mylinuxforwork/dotfiles) and i mostly use [Catppuccin](https://catppuccin.com/) themes.
+My waybar dotfiles started off as a mix of [ML4W](https://github.com/mylinuxforwork/dotfiles) and [rubyowo](https://github.com/rubyowo) waybar config.
+I mostly use [Catppuccin](https://catppuccin.com/) themes.
