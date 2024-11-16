@@ -11,16 +11,25 @@ chosen=$(printf "$shutdown\n$reboot\n$lock\n$suspend\n$logout" | rofi -dmenu -i 
 
 # Ask for confirmation
 rdialog () {
-    rofi -dmenu\
+    printf "\nYes\nNo" | rofi -dmenu\
         -i\
         -no-fixed-num-lines\
-        -p "Are You Sure? : "\
+        -p "Are You Sure? "\
         -theme "$ddir/confirm.rasi"
-    }
+}
+
+# timer () {
+#     time=3
+#     while (($time > 0)); do
+#         echo "$time" | rofi -dmenu &
+#         sleep 1;
+#         time=$(($time - 1));
+#         killall rofi;
+#     done
+# }
 
 case "$chosen" in
     "$shutdown") 
-        ans=$(rdialog &)
         poweroff;;
     "$reboot") reboot;;
     "$lock") hyprlock;;

@@ -1,4 +1,4 @@
-configuration {
+// configuration {
 /*	modes: "window,drun,run,ssh";*/
 /*	font: "mono 12";*/
 /*	location: 0;*/
@@ -145,7 +145,7 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
-  timeout {
+/*  timeout {
       action: "kb-cancel";
       delay:  0;
   }
@@ -153,4 +153,4 @@ configuration {
       directories-first: true;
       sorting-method:    "name";
   }
-}
+}*/

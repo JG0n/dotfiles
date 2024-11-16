@@ -4,7 +4,7 @@ configuration {
     drun-display-format:            "{icon} {name}";
     disable-history:                false;
     click-to-exit: 		            true;
-    location:                       4;
+    location:                       0;
 }
 
 @import "font.rasi"
@@ -20,7 +20,7 @@ window {
     border:                  	    2px;
     border-color:                   @BGA;
     border-radius:                  10px;
-    width:                          110px;
+    width:                          550px;
     x-offset:                       -1%;
     y-offset:                       0;
 }
@@ -31,7 +31,7 @@ prompt {
     padding: 			            8px;
     background-color: 		        @BG;
     text-color: 		            @FG;
-    border:                  	    0px 0px 2px 0px;
+    border:                  	    0px 0px 0px 0px;
     border-color:                   @BDR;
     border-radius:                  10px;
 }
@@ -43,7 +43,7 @@ textbox-prompt-colon {
     background-color:               @BG;
     text-color:                     @BG;
     padding:                        8px 12px 8px 12px;
-    font:			                "Iosevka Nerd Font 10";
+    font:			                "Hack Nerd Font Propo 10";
 }
 
 entry {
@@ -82,8 +82,8 @@ case-indicator {
 
 listview {
     background-color:               @BG;
-    columns:                        1;
-    lines:			                5;
+    columns:                        5;
+    lines:			                1;
     spacing:                        15px;
     cycle:                          true;
     dynamic:                        true;
@@ -102,7 +102,7 @@ element {
     text-color:                     @FG;
     orientation:                    horizontal;
     border-radius:                  10px;
-    padding:                        20px;
+    padding:                        20px 0px;
 }
 
 element-icon {
@@ -117,7 +117,7 @@ element-icon {
 element-text {
     background-color: 		        inherit;
     text-color:       		        inherit;
-    font:			                "feather 20";
+    font:			                "Hack Nerd Font Propo 20";
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
