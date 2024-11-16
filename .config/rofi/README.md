@@ -6,5 +6,5 @@ Key | Action |
 |Meta + P | Open the Powermenu |
 |Meta + S | Open the Screenshot Menu |
 
-## Thanks to
+## Thanks
 Based of the [Catppuccin](https://github.com/catppuccin/rofi) theme and [Deathemonic](https://github.com/Deathemonic) dotfiles
