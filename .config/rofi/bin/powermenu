@@ -34,8 +34,7 @@ case "$chosen" in
     "$reboot") reboot;;
     "$lock") hyprlock;;
     "$suspend") 
-        systemctl suspend;
-        hyprctl dispatch exit;;
+        systemctl suspend;;
     "$logout") hyprctl dispatch exit;;
     *) exit 1;;
 esac
