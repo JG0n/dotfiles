@@ -26,3 +26,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Aliases
 alias foundryvtt="foundry/foundryvtt/foundryvtt"
 alias p="sudo pacman"
+alias gittree="git log --all --decorate --oneline --graph"
