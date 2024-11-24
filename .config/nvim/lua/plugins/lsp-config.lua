@@ -14,7 +14,8 @@ return {
                     "gopls",
                     "basedpyright",
                     "ts_ls",
-                    "hyprls"
+                    "hyprls",
+                    "csharp_ls",
                 }
             })
         end
@@ -43,7 +44,12 @@ return {
             lspconfig.hyprls.setup({
                 capabilities = capabilities,
             })
-
+            lspconfig.gdscript.setup({
+                capabilities = capabilities,
+            })
+            lspconfig.csharp_ls.setup({
+                capabilities = capabilities,
+            })
 
             -- Global mappings.
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
