@@ -43,5 +43,11 @@ require("lazy").setup({
     checker = checker
 })
 
-
+-- Check if a godot project file exists in directory and if so listen on 
+-- server
+local gdproject = io.open(vim.fn.getcwd()..'/project.godot', 'r')
+if gdproject then
+    io.close(gdproject)
+    vim.fn.serverstart './godothost'
+end
 
