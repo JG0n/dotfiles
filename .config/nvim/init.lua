@@ -34,7 +34,7 @@ local spec = {
 local install = { colorscheme = { "habamax" } }
 
 -- automatically check for plugin updates
-local checker = { enabled = true }
+local checker = { enabled = true, notify = false }
 
 -- Setup lazy.nvim
 require("lazy").setup({
