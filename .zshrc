@@ -37,3 +37,6 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# Man
+export MANPAGER='nvim +Man!'
