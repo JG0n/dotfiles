@@ -58,13 +58,14 @@ return {
             dap.listeners.before.launch.dapui_config = function()
                 dapui.open()
             end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
+            -- dap.listeners.before.event_terminated.dapui_config = function()
+            --     dapui.close()
+            -- end
+            -- dap.listeners.before.event_exited.dapui_config = function()
+            --     dapui.close()
+            -- end
 
+            vim.keymap.set('n', '<F4>', dapui.toggle, {desc = 'Debug ui toggle'})
             vim.keymap.set('n', '<F5>', dap.continue, {desc = 'Debug continue'})
             vim.keymap.set('n', '<F10>', dap.step_over, {desc = 'Debug step over'})
             vim.keymap.set('n', '<F11>', dap.step_into, {desc = 'Debug step into'})
