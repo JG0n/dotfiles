@@ -31,7 +31,7 @@ local spec = {
 
 -- Configure any other settings here. See the documentation for more details.
 -- colorscheme that will be used when installing plugins.
-local install = { colorscheme = { "habamax" } }
+local install = { colorscheme = { "catppuccin" } }
 
 -- automatically check for plugin updates
 local checker = { enabled = true, notify = false }

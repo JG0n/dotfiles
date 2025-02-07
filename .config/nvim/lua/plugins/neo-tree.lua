@@ -8,10 +8,6 @@ return {
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     config = function()
-        -- vim.keymap.set('n', '<leader>h', ':Neotree filesystem reveal left<CR>', {})
-        -- vim.keymap.set('n', '<leader>l', ':Neotree filesystem reveal right<CR>', {})
-        vim.keymap.set('n', '<leader>l', ':Neotree filesystem reveal float<CR>', {})
-        vim.keymap.set('n', '<leader>b', ':Neotree buffers reveal float<CR>', {})
         require("neo-tree").setup({
             window = {
                 mappings = {
