@@ -11,7 +11,8 @@ return {
         "mfussenegger/nvim-dap",
         dependencies = {
             "rcarriga/nvim-dap-ui",
-            "leoluz/nvim-dap-go"
+            "leoluz/nvim-dap-go",
+            "NicholasMata/nvim-dap-cs"
         },
         config = function()
             local dap, dapui = require("dap"), require("dapui")
@@ -19,23 +20,7 @@ return {
 
             require("dap-go").setup({})
 
-            -- C# Debugger setup
-            dap.adapters.coreclr = {
-                type = 'executable',
-                command = '/home/jose/.local/share/nvim/mason/bin/netcoredbg',
-                args = {'--interpreter=vscode'}
-            }
-
-            dap.configurations.cs = {
-                {
-                    type = "coreclr",
-                    name = "launch - netcoredbg",
-                    request = "launch",
-                    program = function()
-                        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                    end,
-                },
-            }
+            require('dap-cs').setup()
 
             -- GODOT Debugger setup
             dap.adapters.godot = {
