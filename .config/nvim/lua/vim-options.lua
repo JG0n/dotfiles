@@ -2,6 +2,40 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
+vim.cmd('set tabline=%!MyTabLine()')
+
+vim.cmd([[
+    function MyTabLine()
+        let s = ''
+        for i in range(tabpagenr('$'))
+            " select the highlighting
+            if i + 1 == tabpagenr()
+                let s ..= '%#TabLineSel#'
+            else
+                let s ..= '%#TabLine#'
+            endif
+            " set the tab page number (for mouse clicks)
+            let s ..= '%' .. (i + 1) .. 'T'
+            " the label is made by MyTabLabel()
+            let s ..= ' %{MyTabLabel(' .. (i + 1) .. ')} '
+        endfor
+        " after the last tab fill with TabLineFill and reset tab page nr
+        let s ..= '%#TabLineFill#%T'
+        " right-align the label to close the current tab page
+        if tabpagenr('$') > 1
+            let s ..= '%=%#TabLine#%999Xclose'
+        endif
+        return s
+    endfunction
+]])
+vim.cmd([[
+    function MyTabLabel(n)
+        let buflist = tabpagebuflist(a:n)
+        let winnr = tabpagewinnr(a:n)
+        let label = a:n .. ' ' .. fnamemodify(bufname(buflist[winnr - 1]), ':t')
+        return label
+    endfunction
+]])
 
 -- Sets
 vim.opt.nu = true
@@ -65,3 +99,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, {desc = 'Lsp Code Action', buffer = ev.buf})
     end
 })
+
+-- tabs
+vim.keymap.set('n', '<leader>tt', ":tabnew<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<leader>tc', ":tabclose<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<leader>tn', ":tabnext<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<leader>tp', ":tabprevious<CR>", {desc = "Open new tab"})

@@ -13,7 +13,8 @@ return {
                 mappings = {
                     ['l'] = 'open',
                     ['h'] = 'close_node',
-                    ['L'] = 'open_nofocus'
+                    ['L'] = 'open_nofocus',
+                    ['t'] = 'open_tab',
                 }
             },
             commands = {
@@ -23,6 +24,13 @@ return {
                         vim.cmd([[Neotree close]])
                     end)
                 end,
+                open_tab = function (state)
+                    local node = state.tree:get_node()
+                    local path = node.path
+                    local modify = vim.fn.fnamemodify
+
+                    vim.api.nvim_input(":tabnew " .. modify(path, ':.') .. "<CR>")
+                end
             },
             filesystem = {
                 filtered_items = {
