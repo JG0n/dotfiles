@@ -102,6 +102,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- tabs
 vim.keymap.set('n', '<leader>tt', ":tabnew<CR>", {desc = "Open new tab"})
-vim.keymap.set('n', '<leader>tc', ":tabclose<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<leader>tq', ":tabclose<CR>", {desc = "Open new tab"})
 vim.keymap.set('n', '<leader>tn', ":tabnext<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<C-l>', ":tabnext<CR>", {desc = "Open new tab"})
 vim.keymap.set('n', '<leader>tp', ":tabprevious<CR>", {desc = "Open new tab"})
+vim.keymap.set('n', '<C-h>', ":tabprevious<CR>", {desc = "Open new tab"})
