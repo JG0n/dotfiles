@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+screenshot_name="$(xdg-user-dir PICTURES)/Screenshots/Screenshot_$(date +%Y-%m-%d-%I-%M-%S)_$(xrandr | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current').png"
+
+grim -g "$(slurp)" $screenshot_name
+
+if [[ -e "$screenshot_name" ]]; then
+    wl-copy < $screenshot_name 
+    notify-send -u low -i $screenshot_name "Copied to clipboard." && hyprctl dispatch "exec [float; pin] gwenview $screenshot_name"
+fi
