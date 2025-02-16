@@ -4,7 +4,15 @@ return {
     config = function()
         local config = require("nvim-treesitter.configs")
         config.setup({
-            ensure_installed = {"lua", "go", "hyprlang", "bash", "gdscript", "godot_resource", "gdshader", "c_sharp"},
+            ensure_installed = {
+                "lua",
+                "go",
+                "hyprlang",
+                "bash",
+                "gdscript", "godot_resource", "gdshader",
+                "c_sharp",
+                "comment"
+            },
             highlight = { enable = true },
             indent = { enable = true },
         })
