@@ -1,5 +1,9 @@
 # Dotfiles
 These are the dotfiles for my system
+## Required packages
+
+### Screenshots
+grim, slurp, jq, wl-clipboard, gwenview (for seeing the screenshot)
 
 ## Thanks
 
