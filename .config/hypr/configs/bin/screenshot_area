@@ -6,5 +6,6 @@ grim -g "$(slurp)" $screenshot_name
 
 if [[ -e "$screenshot_name" ]]; then
     wl-copy < $screenshot_name 
-    notify-send -u low -i $screenshot_name "Copied to clipboard." && hyprctl dispatch "exec [float; pin] gwenview $screenshot_name"
+    notify-send -u low -i $screenshot_name "Copied to clipboard."
+    hyprctl dispatch "exec [float; pin] gwenview $screenshot_name"
 fi
