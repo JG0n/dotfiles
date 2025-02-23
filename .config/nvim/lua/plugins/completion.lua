@@ -69,7 +69,7 @@ return {
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' }, -- For luasnip users.
-                },{
+                }, {
                     { name = 'buffer' },
                 })
             })
@@ -78,10 +78,18 @@ return {
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "rafamadriz/friendly-snippets" },
-        config = function ()
+        config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             local luasnip = require("luasnip")
-            luasnip.filetype_extend("cs", {"csharpdoc"})
+            luasnip.filetype_extend("cs", { "csharpdoc" })
+
+            -- JS
+            luasnip.filetype_extend("ts", { "tsdoc" })
+            luasnip.filetype_extend("ts", { "next-ts" })
+            luasnip.filetype_extend("ts", { "react-ts" })
+
+            -- TS
+            luasnip.filetype_extend("js", { "jsdoc" })
         end
     }
 }

@@ -1,9 +1,8 @@
-vim.cmd("set expandtab")
+vim.cmd("set noexpandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd('set tabline=%!MyTabLine()')
-
 vim.cmd([[
     function MyTabLine()
         let s = ''
@@ -46,6 +45,10 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.autoread = true
 
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 20
+vim.opt.foldopen = "all"
+
 -- Keymaps
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
@@ -85,33 +88,75 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = 'Diagnostic 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Lsp hover over info', buffer = ev.buf })
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration', buffer = ev.buf })
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition', buffer = ev.buf })
-        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action', buffer = ev.buf })
-        vim.keymap.set('n', '<leader>fa', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
-    end
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Lsp hover over info', buffer = ev.buf })
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration', buffer = ev.buf })
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition', buffer = ev.buf })
+		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action', buffer = ev.buf })
+		vim.keymap.set('n', '<leader>fa', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
+		vim.keymap.set('n', '<leader>fd', vim.diagnostic.open_float, { desc = 'Open diagnostics window' })
+
+		-- local last_row = vim.api.nvim_buf_line_count(ev.buf)
+		-- vim.keymap.set(
+		-- 	{ 'n', 'v' },
+		-- 	'<space>cb',
+		-- 	vim.lsp.buf.range_code_action,
+		-- 	{
+		-- 		desc = 'Lsp Code Action',
+		-- 		buffer = ev.buf,
+		-- 		["range"] = {
+		-- 			["start"] = { 0 },
+		-- 			["end"] = { last_row }
+		-- 		}
+		-- 	})
+	end
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-  callback = function(args)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.format {async = false, id = args.data.client_id }
-      end,
-    })
-  end
+	group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+	callback = function(args)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = args.buf,
+			callback = function()
+				vim.lsp.buf.format { async = false, id = args.data.client_id }
+			end,
+		})
+	end
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+	callback = function()
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("ts_imports", { clear = true }),
+			pattern = { "*.tsx,*.ts" },
+			callback = function()
+				vim.lsp.buf.code_action({
+					apply = true,
+					context = {
+						only = { "source.removeUnusedImports.ts" },
+						diagnostics = {},
+					},
+				})
+
+				vim.lsp.buf.code_action({
+					apply = true,
+					context = {
+						only = { "source.sortImports.ts" },
+						diagnostics = {},
+					},
+				})
+			end
+
+		})
+	end
+})
 
 -- tabs
 vim.keymap.set('n', '<leader>tt', ":tabnew<CR>", { desc = "Open new tab" })
