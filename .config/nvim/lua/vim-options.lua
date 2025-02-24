@@ -69,8 +69,8 @@ vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true })
 -- Neotree
 -- vim.keymap.set('n', '<leader>h', ':Neotree filesystem reveal left<CR>', {})
 -- vim.keymap.set('n', '<leader>l', ':Neotree filesystem reveal right<CR>', {})
-vim.keymap.set('n', '<leader>l', ':Neotree filesystem reveal float<CR>', {})
-vim.keymap.set('n', '<leader>b', ':Neotree buffers reveal float<CR>', {})
+vim.keymap.set('n', '<leader>mf', ':Neotree filesystem reveal float<CR>', {})
+vim.keymap.set('n', '<leader>mb', ':Neotree buffers reveal float<CR>', {})
 
 -- Telescope
 vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>", { desc = 'Telescope find files' })
@@ -79,9 +79,9 @@ vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>", { desc = 'Telescop
 -- Lsp
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = 'Diagnostic open float' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Diagnostic go to next' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Diagnostic go to prev' })
+vim.keymap.set('n', '<space>df', vim.diagnostic.open_float, { desc = 'Diagnostic open float' })
+vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Diagnostic go to next' })
+vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = 'Diagnostic go to prev' })
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { desc = 'Diagnostic set loclist' })
 
 
@@ -95,66 +95,38 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Lsp hover over info', buffer = ev.buf })
-		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration', buffer = ev.buf })
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition', buffer = ev.buf })
-		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action', buffer = ev.buf })
-		vim.keymap.set('n', '<leader>fa', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
-		vim.keymap.set('n', '<leader>fd', vim.diagnostic.open_float, { desc = 'Open diagnostics window' })
-
-		-- local last_row = vim.api.nvim_buf_line_count(ev.buf)
-		-- vim.keymap.set(
-		-- 	{ 'n', 'v' },
-		-- 	'<space>cb',
-		-- 	vim.lsp.buf.range_code_action,
-		-- 	{
-		-- 		desc = 'Lsp Code Action',
-		-- 		buffer = ev.buf,
-		-- 		["range"] = {
-		-- 			["start"] = { 0 },
-		-- 			["end"] = { last_row }
-		-- 		}
-		-- 	})
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Lsp hover over info'})
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration'})
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition'})
+		vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = 'Lsp type definition'})
+		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action'})
+		vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
+		vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Lsp rename'})
+		vim.keymap.set('n', '<leader>lo', ":OrganizeImports<CR>", { desc = 'Lsp organize imports'})
 	end
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-	callback = function(args)
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = args.buf,
-			callback = function()
-				vim.lsp.buf.format { async = false, id = args.data.client_id }
-			end,
-		})
-	end
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = vim.api.nvim_create_augroup("ts_imports", { clear = true }),
+	pattern = { "*.tsx,*.ts" },
 	callback = function()
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = vim.api.nvim_create_augroup("ts_imports", { clear = true }),
-			pattern = { "*.tsx,*.ts" },
-			callback = function()
-				vim.lsp.buf.code_action({
-					apply = true,
-					context = {
-						only = { "source.removeUnusedImports.ts" },
-						diagnostics = {},
-					},
-				})
+		vim.cmd(":OrganizeImports")
 
-				vim.lsp.buf.code_action({
-					apply = true,
-					context = {
-						only = { "source.sortImports.ts" },
-						diagnostics = {},
-					},
-				})
-			end
+		-- vim.lsp.buf.code_action({
+		-- 	apply = true,
+		-- 	context = {
+		-- 		only = { "source.removeUnusedImports.ts" },
+		-- 		diagnostics = {},
+		-- 	},
+		-- })
 
-		})
+		-- vim.lsp.buf.code_action({
+		-- 	apply = true,
+		-- 	context = {
+		-- 		only = { "source.sortImports.ts" },
+		-- 		diagnostics = {},
+		-- 	},
+		-- })
 	end
 })
 
