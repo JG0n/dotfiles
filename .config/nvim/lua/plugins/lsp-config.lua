@@ -33,7 +33,8 @@ return {
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					callback = function()
 						if client.supports_method("textDocument/formatting") then
-							client.request('textDocument/formatting', params, nil, bufnr)
+							-- client.request('textDocument/formatting', params, nil, bufnr)
+							vim.lsp.buf.format { async = false, id = params.client_id }
 						end
 					end,
 				})
