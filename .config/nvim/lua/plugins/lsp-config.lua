@@ -77,6 +77,10 @@ return {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					lsp_formatting(client, bufnr)
+					vim.keymap.set('n', '<leader>gpf', ":! npx prettier % --write <CR>",
+						{ desc = 'Run prettier on current file' })
+					vim.keymap.set('n', '<leader>gpp', ":! npx prettier . --write <CR>",
+						{ desc = 'Run prettier in project' })
 				end,
 				commands = {
 					OrganizeImports = {
