@@ -49,6 +49,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 20
 vim.opt.foldopen = "all"
 
+vim.opt.helpheight = 9999
 -- Keymaps
 
 -- Make sure to setup `mapleader` and `maplocalleader` before

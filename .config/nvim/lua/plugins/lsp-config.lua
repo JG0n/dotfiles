@@ -19,7 +19,7 @@ return {
 					"html", "emmet_ls", "cssls", "tailwindcss",
 				}
 			})
-		end
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -29,16 +29,23 @@ return {
 			local util = require("vim.lsp.util")
 
 			local function lsp_formatting(client, bufnr)
-				local params = util.make_formatting_params({})
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					callback = function()
-						if client.supports_method("textDocument/formatting") then
+				if client.supports_method("textDocument/formatting") then
+					local params = util.make_formatting_params({})
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						callback = function()
 							-- client.request('textDocument/formatting', params, nil, bufnr)
 							vim.lsp.buf.format { async = false, id = params.client_id }
-						end
-					end,
-				})
+						end,
+					})
+				end
 			end
+
+			-- lspconfig.lua_ls.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = function(client, bufnr)
+			-- 		lsp_formatting(client, bufnr)
+			-- 	end,
+			-- })
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
@@ -61,7 +68,6 @@ return {
 			end
 
 			local function ts_formatting(client, bufnr)
-				local params = util.make_formatting_params({})
 				local jsonOutput = vim.api.nvim_exec("!npm list --depth=0 --json", true)
 
 				if string.find(jsonOutput, "prettier") ~= nil then
@@ -75,14 +81,13 @@ return {
 							vim.cmd [[ silent ! npx prettier % --write]]
 						end
 					})
-				else
+				elseif client.supports_method("textDocument/formatting") then
+					local params = util.make_formatting_params({})
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						callback = function()
-							if client.supports_method("textDocument/formatting") then
-								ts_organize_imports()
-								-- client.request('textDocument/formatting', params, nil, bufnr)
-								vim.lsp.buf.format { async = false, id = params.client_id }
-							end
+							ts_organize_imports()
+							-- client.request('textDocument/formatting', params, nil, bufnr)
+							vim.lsp.buf.format { async = false, id = params.client_id }
 						end,
 					})
 				end
