@@ -40,28 +40,15 @@ return {
 				})
 			end
 
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			})
-
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-				-- cmd = {"gopls"},
-				-- filetype = {"go", "gomod", "gowork", "gotmpl"},
-				-- root_dir = root_pattern("go.work", "go.mod", ".git"),
-			})
-
-			lspconfig.basedpyright.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
+			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+						on_attach = function(client, bufnr)
+							lsp_formatting(client, bufnr)
+						end,
+					})
+				end
 			})
 
 			local function ts_organize_imports()
@@ -73,14 +60,43 @@ return {
 				vim.lsp.buf.execute_command(params)
 			end
 
+			local function ts_formatting(client, bufnr)
+				local params = util.make_formatting_params({})
+				local jsonOutput = vim.api.nvim_exec("!npm list --depth=0 --json", true)
+
+				if string.find(jsonOutput, "prettier") ~= nil then
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						callback = function()
+							vim.cmd(":OrganizeImports")
+						end,
+					})
+					vim.api.nvim_create_autocmd("BufWritePost", {
+						callback = function()
+							vim.cmd [[ silent ! npx prettier % --write]]
+						end
+					})
+				else
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						callback = function()
+							if client.supports_method("textDocument/formatting") then
+								vim.cmd(":OrganizeImports")
+								-- client.request('textDocument/formatting', params, nil, bufnr)
+								vim.lsp.buf.format { async = false, id = params.client_id }
+							end
+						end,
+					})
+				end
+			end
+
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
 					vim.keymap.set('n', '<leader>gpf', ":! npx prettier % --write <CR>",
 						{ desc = 'Run prettier on current file' })
 					vim.keymap.set('n', '<leader>gpp', ":! npx prettier . --write <CR>",
 						{ desc = 'Run prettier in project' })
+
+					ts_formatting(client, bufnr)
 				end,
 				commands = {
 					OrganizeImports = {
@@ -89,53 +105,6 @@ return {
 					},
 				},
 
-			})
-
-			lspconfig.eslint.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.hyprls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			})
-
-			lspconfig.gdscript.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			})
-
-			lspconfig.csharp_ls.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			})
-
-			lspconfig.html.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			})
-
-			lspconfig.emmet_ls.setup({
-				capabilities = capabilities
-			})
-
-			lspconfig.cssls.setup {
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					lsp_formatting(client, bufnr)
-				end,
-			}
-
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities
 			})
 		end
 	}
