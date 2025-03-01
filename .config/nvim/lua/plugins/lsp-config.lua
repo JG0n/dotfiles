@@ -67,7 +67,7 @@ return {
 				if string.find(jsonOutput, "prettier") ~= nil then
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						callback = function()
-							vim.cmd(":OrganizeImports")
+							ts_organize_imports()
 						end,
 					})
 					vim.api.nvim_create_autocmd("BufWritePost", {
@@ -79,7 +79,7 @@ return {
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						callback = function()
 							if client.supports_method("textDocument/formatting") then
-								vim.cmd(":OrganizeImports")
+								ts_organize_imports()
 								-- client.request('textDocument/formatting', params, nil, bufnr)
 								vim.lsp.buf.format { async = false, id = params.client_id }
 							end
