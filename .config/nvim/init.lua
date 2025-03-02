@@ -44,7 +44,7 @@ require("lazy").setup({
 	install = install,
 	checker = checker,
 	change_detection = {
-		enabled = false,
+		enabled = true,
 		notify = false,
 	},
 })

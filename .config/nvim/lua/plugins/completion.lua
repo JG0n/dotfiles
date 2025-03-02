@@ -87,8 +87,8 @@ return {
 
 			-- JS
 			luasnip.filetype_extend("ts", { "tsdoc" })
-			luasnip.filetype_extend("ts", { "next-ts" })
-			luasnip.filetype_extend("ts", { "react-ts" })
+			-- luasnip.filetype_extend("ts", { "next-ts" })
+			-- luasnip.filetype_extend("ts", { "react-ts" })
 
 			-- TS
 			luasnip.filetype_extend("js", { "jsdoc" })

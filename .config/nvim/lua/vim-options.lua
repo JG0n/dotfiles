@@ -59,6 +59,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.api.nvim_set_keymap('n', '<esc>', ':noh<return>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'zz', ':up<CR>', { noremap = true, desc = ":update" })
 
 -- Copy/Paste
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true })
@@ -105,7 +106,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action' })
 		vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
 		vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'Lsp rename' })
-		vim.keymap.set('n', '<leader>lo', ":OrganizeImports<CR>", { desc = 'Lsp organize imports' })
+		vim.keymap.set('n', '<leader>loi', ":OrganizeImports<CR>", { desc = 'Lsp organize imports' })
 	end
 })
 
