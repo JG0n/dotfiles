@@ -74,12 +74,6 @@ vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true })
 vim.keymap.set('n', '<leader>mf', ':Neotree filesystem reveal float<CR>', {})
 vim.keymap.set('n', '<leader>mb', ':Neotree buffers reveal float<CR>', {})
 
--- Telescope
-vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>", { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fa', ':lua require"telescope.builtin".find_files({ hidden = true, no_ignore = true })<CR>',
-	{ desc = 'Telescope all find files' })
-vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>", { desc = 'Telescope live grep' })
-
 -- Lsp
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -100,8 +94,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Lsp hover over info' })
-		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration' })
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition' })
+		-- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Lsp declaration' })
+		-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Lsp definition' })
 		vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = 'Lsp type definition' })
 		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { desc = 'Lsp Code Action' })
 		vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Lsp buffer formatting', buffer = ev.buf })
