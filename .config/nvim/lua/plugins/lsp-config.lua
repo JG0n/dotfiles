@@ -53,7 +53,7 @@ return {
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						callback = function()
 							-- ts_organize_imports()
-							vim.cmd(":Prettier")
+							vim.cmd(":PrettierAsync")
 						end,
 					})
 				elseif client.supports_method("textDocument/formatting") then

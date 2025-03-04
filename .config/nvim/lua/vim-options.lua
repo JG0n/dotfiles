@@ -76,7 +76,7 @@ vim.keymap.set('n', '<leader>mb', ':Neotree buffers reveal float<CR>', {})
 
 -- Telescope
 vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>", { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fa', ':lua require"telescope.builtin".find_files({ hidden = true })<CR>',
+vim.keymap.set('n', '<leader>fa', ':lua require"telescope.builtin".find_files({ hidden = true, no_ignore = true })<CR>',
 	{ desc = 'Telescope all find files' })
 vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>", { desc = 'Telescope live grep' })
 
