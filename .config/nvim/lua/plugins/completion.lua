@@ -30,8 +30,6 @@ return {
 					['<C-f>'] = cmp.mapping.scroll_docs(4),
 					['<C-Space>'] = cmp.mapping.complete(),
 					['<C-e>'] = cmp.mapping.abort(),
-					-- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-
 					['<CR>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							if luasnip.expandable() then
@@ -71,7 +69,22 @@ return {
 					{ name = 'luasnip' }, -- For luasnip users.
 				}, {
 					{ name = 'buffer' },
-				})
+				}),
+				sorting = {
+					comparators = {
+						-- compare.score_offset, -- not good at all
+						cmp.config.compare.exact,
+						-- cmp.config.compare.kind,
+						cmp.config.compare.locality,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.length,
+						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+						cmp.config.compare.offset,
+						cmp.config.compare.order,
+						-- cmp.config.compare.scopes, -- what?
+						-- cmp.config.compare.sort_text,
+					},
+				}
 			})
 		end
 	},
@@ -86,12 +99,12 @@ return {
 			luasnip.filetype_extend("cs", { "csharpdoc" })
 
 			-- JS
-			luasnip.filetype_extend("ts", { "tsdoc" })
+			luasnip.filetype_extend("typescript", { "tsdoc" })
 			-- luasnip.filetype_extend("ts", { "next-ts" })
 			-- luasnip.filetype_extend("ts", { "react-ts" })
 
 			-- TS
-			luasnip.filetype_extend("js", { "jsdoc" })
+			luasnip.filetype_extend("javascript", { "jsdoc" })
 		end
 	}
 }
