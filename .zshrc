@@ -17,6 +17,9 @@ eval "$(starship init zsh)"
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# Set up path
+PATH="$PATH:/home/jose/.dotnet/tools"
+export PATH
 
 # Sintax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
