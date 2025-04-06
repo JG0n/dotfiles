@@ -5,6 +5,7 @@ return {
 			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",
 			"prettier/vim-prettier",
+			"Decodetalkers/csharpls-extended-lsp.nvim",
 		},
 		config = function()
 			require("mason").setup()
@@ -26,13 +27,11 @@ return {
 				end
 			end
 
-			local function generic_lsp(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						lsp_formatting(client, bufnr)
-					end,
-				})
+			local function lsp_fold(client)
+				if client:supports_method('textDocument/foldingRange') then
+					local win = vim.api.nvim_get_current_win()
+					vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+				end
 			end
 
 			-- TSServer Specific
@@ -69,7 +68,12 @@ return {
 
 			local handlers = {
 				function(server_name)
-					generic_lsp(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+						on_attach = function(client, bufnr)
+							lsp_formatting(client, bufnr)
+						end,
+					})
 				end,
 				["ts_ls"] = function()
 					lspconfig.ts_ls.setup({
@@ -101,18 +105,14 @@ return {
 						settings = {
 							Lua = {
 								runtime = {
-									-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 									version = "LuaJIT",
 								},
 								diagnostics = {
-									-- Get the language server to recognize the `vim` global
 									globals = { "vim" },
 								},
 								workspace = {
-									-- Make the server aware of Neovim runtime files
 									library = vim.api.nvim_get_runtime_file("", true),
 								},
-								-- Do not send telemetry data containing a randomized but unique identifier
 								telemetry = {
 									enable = false,
 								},
@@ -121,6 +121,23 @@ return {
 					})
 				end,
 			}
+
+			lspconfig.csharp_ls.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					local params = util.make_formatting_params({})
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						callback = function()
+							-- client.request('textDocument/formatting', params, nil, bufnr)
+							vim.lsp.buf.format { async = false, id = params.client_id }
+						end,
+					})
+				end,
+				handlers = {
+					["textDocument/definition"] = require('csharpls_extended').handler,
+					["textDocument/typeDefinition"] = require('csharpls_extended').handler,
+				},
+			})
 
 			require("mason-lspconfig").setup({
 				handlers = handlers,
@@ -131,8 +148,9 @@ return {
 					"basedpyright",
 					"ts_ls", "eslint",
 					"hyprls",
-					"csharp_ls",
+					-- "csharp_ls",
 					"html", "emmet_ls", "cssls", "tailwindcss",
+					"omnisharp",
 				}
 			})
 		end

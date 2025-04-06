@@ -45,9 +45,11 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.autoread = true
 
-vim.opt.foldmethod = "indent"
+-- vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 20
-vim.opt.foldopen = "all"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 vim.opt.helpheight = 9999
 -- Keymaps
@@ -67,12 +69,6 @@ vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true })
 
 vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true })
 vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true })
-
--- Neotree
--- vim.keymap.set('n', '<leader>h', ':Neotree filesystem reveal left<CR>', {})
--- vim.keymap.set('n', '<leader>l', ':Neotree filesystem reveal right<CR>', {})
-vim.keymap.set('n', '<leader>mf', ':Neotree filesystem reveal float<CR>', {})
-vim.keymap.set('n', '<leader>mb', ':Neotree buffers reveal float<CR>', {})
 
 -- Lsp
 -- Global mappings.
