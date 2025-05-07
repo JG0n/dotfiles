@@ -107,3 +107,6 @@ vim.keymap.set('n', '<leader>tn', ":tabnext<CR>", { desc = "Open new tab" })
 vim.keymap.set('n', '<C-l>', ":tabnext<CR>", { desc = "Open new tab" })
 vim.keymap.set('n', '<leader>tp', ":tabprevious<CR>", { desc = "Open new tab" })
 vim.keymap.set('n', '<C-h>', ":tabprevious<CR>", { desc = "Open new tab" })
+
+-- neogen
+vim.keymap.set('n', "<leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
