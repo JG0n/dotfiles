@@ -19,6 +19,7 @@ source <(fzf --zsh)
 
 # Set up path
 PATH="$PATH:/home/jose/.dotnet/tools"
+PATH="$PATH:/home/jose/Appimages"
 export PATH
 
 # Sintax highlighting
@@ -30,6 +31,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias foundryvtt="foundry/foundryvtt/foundryvtt"
 alias p="sudo pacman"
 alias gittree="git log --all --decorate --oneline --graph"
+alias dolphin="dolphin ./ & disown"
 
 # Yazy
 function y() {
