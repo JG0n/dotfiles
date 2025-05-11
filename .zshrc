@@ -19,8 +19,9 @@ source <(fzf --zsh)
 
 # Set up path
 PATH="$PATH:/home/jose/.dotnet/tools"
-PATH="$PATH:/home/jose/Appimages"
 export PATH
+
+MANGOHUD=1
 
 # Sintax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
