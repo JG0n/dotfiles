@@ -138,6 +138,8 @@ return {
 				},
 				automatic_enable = true
 			})
+
+			vim.lsp.enable('gdscript')
 		end
 	}
 }
