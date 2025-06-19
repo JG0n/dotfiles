@@ -102,11 +102,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- tabs
 vim.keymap.set('n', '<leader>tt', ":tabnew<CR>", { desc = "Open new tab" })
-vim.keymap.set('n', '<leader>tq', ":tabclose<CR>", { desc = "Open new tab" })
-vim.keymap.set('n', '<leader>tn', ":tabnext<CR>", { desc = "Open new tab" })
-vim.keymap.set('n', '<C-l>', ":tabnext<CR>", { desc = "Open new tab" })
-vim.keymap.set('n', '<leader>tp', ":tabprevious<CR>", { desc = "Open new tab" })
-vim.keymap.set('n', '<C-h>', ":tabprevious<CR>", { desc = "Open new tab" })
+vim.keymap.set('n', '<leader>tq', ":tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set('n', '<leader>tn', ":tabnext<CR>", { desc = "Switch to next tab" })
+vim.keymap.set('n', '<C-l>', ":tabnext<CR>", { desc = "Switch to next tab" })
+vim.keymap.set('n', '<leader>tp', ":tabprevious<CR>", { desc = "Switch to previous tab" })
+vim.keymap.set('n', '<C-h>', ":tabprevious<CR>", { desc = "Switch to previous tab" })
 
 -- neogen
 vim.keymap.set('n', "<leader>nf", ":lua require('neogen').generate()<CR>", { noremap = true, silent = true })
