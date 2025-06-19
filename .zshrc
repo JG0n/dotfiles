@@ -33,6 +33,8 @@ alias foundryvtt="foundry/foundryvtt/foundryvtt"
 alias p="sudo pacman"
 alias gittree="git log --all --decorate --oneline --graph"
 alias dolphin="dolphin ./ & disown"
+alias reload-dolphin="kbuildsycoca6"
+alias ollama="docker exec -it ollama ollama"
 
 # Yazy
 function y() {
