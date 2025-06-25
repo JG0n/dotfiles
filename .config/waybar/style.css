@@ -1,14 +1,15 @@
 @import "themes/catppuccin/mocha.css";
+
 * {
-  font-family: FantasqueSansMono Nerd Font;
-  font-size: 14px;
-  min-height: 0;
+	font-family: FantasqueSansMono Nerd Font;
+	font-size: 14px;
+	min-height: 0;
 }
 
 #waybar {
-  background: transparent;
-  color: @text;
-  margin: 5px 5px;
+	background: transparent;
+	color: @text;
+	margin: 5px 5px;
 }
 
 /*#workspaces {*/
@@ -36,46 +37,54 @@
 
 
 #workspaces {
-    background: @surface0;
-    margin: 5px 1px 6px 1px;
-    /*padding: 0px 1px;*/
-    padding: 0.1rem 1rem;
-    /*border-radius: 15px;*/
-    border-radius: 1rem 1rem 1rem 1rem;
-    border: 0px;
-    font-weight: bold;
-    font-style: normal;
-    opacity: 0.8;
-    /*font-size: 16px;*/
-    color: @text;
-    margin-left: 1rem;
+	background: @crust;
+	margin: 5px 1px 6px 1px;
+	padding: 0.1rem 1rem;
+	border-radius: 10px;
+	border: 0px;
+	font-weight: bold;
+	font-style: normal;
+	/*font-size: 16px;*/
+	color: @base;
+	margin-left: 1rem;
 }
 
 #workspaces button {
-    padding: 0.1rem 1rem;
-    margin: 4px 3px;
-    border-radius: 15px;
-    border: 0px;
-    color: @text;
-    background-color: @surface1;
-    transition: all 0.3s ease-in-out;
-    opacity: 0.4;
+	all: unset;
+	padding: 0.5rem 0.5rem;
+	color: @surface1;
+	transition: all .2s ease;
 }
 
 #workspaces button.active {
-    color: @text;
-    background: @surface1;
-    border-radius: 15px;
-    min-width: 20px;
-    transition: all 0.3s ease-in-out;
-    opacity:1.0;
+	color: @text;
+	border: none;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+	transition: all .2s ease;
 }
 
 #workspaces button:hover {
-    color: @text;
-    background: @surface1;
-    border-radius: 15px;
-    opacity:0.7;
+	color: @surface2;
+	border-radius: 15px;
+}
+
+#workspaces button.empty {
+	color: @surface0;
+	border: none;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+	color: @surface0;
+	border: none;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+	transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+	color: @text;
+	border: none;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
 
@@ -90,76 +99,76 @@
 #custom-lock,
 #custom-power,
 #network {
-  background-color: @surface0;
-  padding: 0.1rem 1rem;
-  margin: 5px 0;
+	background-color: @crust;
+	padding: 0.1rem 1rem;
+	margin: 5px 0;
 }
 
 
 #pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+	color: @maroon;
+	border-radius: 10px 0px 0px 10px;
+	margin-left: 1rem;
 }
 
 #clock {
-  color: @blue;
+	color: @blue;
 }
 
 #bluetooth {
-  color: @sky;
+	color: @sky;
 }
 
 #custom-notification {
-  color: @lavender;
-  border-radius: 0rem 1rem 1rem 0rem;
-  margin-right: 1rem;
+	color: @lavender;
+	border-radius: 0rem 10px 10px 0rem;
+	margin-right: 1rem;
 }
 
 #network {
-  color: @teal;
+	color: @teal;
 }
 
 #battery {
-  color: @green;
+	color: @green;
 }
 
 #battery.charging {
-  color: @green;
+	color: @green;
 }
 
 #battery.warning:not(.charging) {
-  color: @red;
+	color: @red;
 }
 
 #backlight,
-#custom-ddcutil{
-  color: @yellow;
+#custom-ddcutil {
+	color: @yellow;
 }
 
-#backlight, 
+#backlight,
 #battery,
 #custom-ddcutil {
-    border-radius: 0;
+	border-radius: 0;
 }
 
 #custom-music {
-  color: @mauve;
-  border-radius: 1rem;
+	color: @mauve;
+	border-radius: 1rem;
 }
 
 #custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
+	border-radius: 10px 0px 0px 10px;
+	color: @lavender;
 }
 
 #custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
+	margin-right: 1rem;
+	border-radius: 0px 10px 10px 0px;
+	color: @red;
 }
 
 #tray {
-  margin-right: 1rem;
-  border-radius: 1rem;
+	margin-right: 10px;
+	border-radius: 10px;
 }
