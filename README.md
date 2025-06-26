@@ -6,22 +6,33 @@
 ## Required packages
 
 #### Base
-```sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland```
+```
+sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland
+```
 
 #### Hyprpm and plugins
-```sudo pacman -Syu  cmake cpio meson uwsm```
+```
+sudo pacman -Syu  cmake cpio meson uwsm
+```
 
 - [Split workspaces](https://github.com/Duckonaut/split-monitor-workspaces)
+  If split workspaces is not used chanfe ```source = ~/.config/hypr/configs/keybinds/split-workspace.conf``` in config/hypr/configs/keybindings.conf to ```source = ~/.config/hypr/configs/keybinds/workspace.conf```
 
 #### Nvim (for lsps)
-```sudo pacman -Syu npm go dotnet-sdk dotnet-runtime```
+```
+sudo pacman -Syu npm go dotnet-sdk dotnet-runtime
+```
 
 #### Screenshots
-```sudo pacman -Syu grim slurp jq wl-clipboard gwenview```
+```
+sudo pacman -Syu grim slurp jq wl-clipboard gwenview
+```
 
 #### Zsh
 
-```sudo pacman -Syu starship fzf zsh-syntax-highlighting zsh-autosuggestions```
+```
+sudo pacman -Syu starship fzf zsh-syntax-highlighting zsh-autosuggestions
+```
 
 ## Thanks
 
