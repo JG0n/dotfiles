@@ -1,6 +1,15 @@
 # Dotfiles
-These are the dotfiles for my system
+![image](https://github.com/user-attachments/assets/1e808faa-da1b-4bf3-881c-782472960373)
+
+![image](https://github.com/user-attachments/assets/fda0d1df-5b76-4ffd-be42-2682d7423ef5)
+
 ## Required packages
+
+#### Base
+```sudo pacman -Syu hyprland ```
+
+#### Nvim (for lsps)
+```sudo pacman -Syu npm go dotnet-sdk dotnet-runtime```
 
 #### Screenshots
 ```sudo pacman -Syu grim slurp jq wl-clipboard gwenview```
