@@ -15,8 +15,7 @@ sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland
 sudo pacman -Syu  cmake cpio meson uwsm
 ```
 
-- [Split workspaces](https://github.com/Duckonaut/split-monitor-workspaces)
-  If split workspaces is not used chanfe ```source = ~/.config/hypr/configs/keybinds/split-workspace.conf``` in config/hypr/configs/keybindings.conf to ```source = ~/.config/hypr/configs/keybinds/workspace.conf```
+- [Split workspaces](https://github.com/Duckonaut/split-monitor-workspaces) - If split workspaces is not used change ```source = ~/.config/hypr/configs/keybinds/split-workspace.conf``` in config/hypr/configs/keybindings.conf to ```source = ~/.config/hypr/configs/keybinds/workspace.conf```
 
 #### Nvim (for lsps)
 ```
