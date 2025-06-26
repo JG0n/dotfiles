@@ -3,7 +3,10 @@ These are the dotfiles for my system
 ## Required packages
 
 #### Screenshots
-grim, slurp, jq, wl-clipboard, gwenview (for seeing the screenshot)
+grim slurp jq wl-clipboard gwenview
+
+#### Zsh
+starship fzf zsh-syntax-highlighting zsh-autosuggestions
 
 ## Thanks
 
