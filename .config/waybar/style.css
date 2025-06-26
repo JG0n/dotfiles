@@ -172,3 +172,8 @@
 	margin-right: 10px;
 	border-radius: 10px;
 }
+
+#tray menu {
+	background: @base;
+	color: @text;
+}
