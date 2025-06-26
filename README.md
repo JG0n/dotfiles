@@ -3,10 +3,11 @@ These are the dotfiles for my system
 ## Required packages
 
 #### Screenshots
-grim slurp jq wl-clipboard gwenview
+```sudo pacman -Syu grim slurp jq wl-clipboard gwenview```
 
 #### Zsh
-starship fzf zsh-syntax-highlighting zsh-autosuggestions
+
+```sudo pacman -Syu starship fzf zsh-syntax-highlighting zsh-autosuggestions```
 
 ## Thanks
 
