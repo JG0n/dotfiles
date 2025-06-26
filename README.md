@@ -6,7 +6,12 @@
 ## Required packages
 
 #### Base
-```sudo pacman -Syu hyprland ```
+```sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland```
+
+#### Hyprpm and plugins
+```sudo pacman -Syu  cmake cpio meson uwsm```
+
+- [Split workspaces](https://github.com/Duckonaut/split-monitor-workspaces)
 
 #### Nvim (for lsps)
 ```sudo pacman -Syu npm go dotnet-sdk dotnet-runtime```
