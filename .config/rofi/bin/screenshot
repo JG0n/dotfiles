@@ -50,7 +50,7 @@ countdown () {
 
 # take shots
 shotnow () {
-    sleep 0.5 && grim ${dir}/"$file"
+    grim ${dir}/"$file"
 	notify_view
 }
 
@@ -72,12 +72,12 @@ shotmon() {
 }
 
 shotwin () {
-    sleep 0.5 && grim -g "$(hyprctl -j activewindow | jq -j '. | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')" ${dir}/"$file"
+    grim -g "$(hyprctl -j activewindow | jq -j '. | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')" ${dir}/"$file"
 	notify_view
 }
 
 shotarea () {
-	sleep 0.5 && grim -g "$(slurp)" ${dir}/"$file"
+	grim -g "$(slurp)" ${dir}/"$file"
 	notify_view
 }
 
@@ -91,16 +91,16 @@ options="$monitor\n$area\n$window\n$screen\n"
 chosen="$(echo -e "$options" | $rofi_command -p 'Take A Shot' -dmenu -selected-row 0)"
 case $chosen in
     $monitor)
-        shotmon
+        sleep 0.5 && shotmon
         ;;
     $area)
-		shotarea
+		sleep 0.5 && shotarea
         ;;
     $window)
-		shotwin
+		sleep 0.5 && shotwin
 		;;
     $screen)
-		shotnow
+		sleep 0.5 && shotnow
         ;;
 		#   $infive)
 		# shot5
