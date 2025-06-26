@@ -7,7 +7,7 @@
 
 #### Base
 ```
-sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland
+sudo pacman -Syu hyprland hyprpaper hypridle hyprlock hyprpaper rofi-wayland nvim
 ```
 
 #### Hyprpm and plugins
@@ -30,7 +30,8 @@ sudo pacman -Syu grim slurp jq wl-clipboard gwenview
 #### Zsh
 
 ```
-sudo pacman -Syu starship fzf zsh-syntax-highlighting zsh-autosuggestions
+sudo pacman -Syu zsh starship fzf zsh-syntax-highlighting zsh-autosuggestions
+chsh -s /usr/bin/zsh
 ```
 
 ## Thanks
