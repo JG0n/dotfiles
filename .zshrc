@@ -48,3 +48,5 @@ function y() {
 
 # Man
 export MANPAGER='nvim +Man!'
+
+fastfetch
