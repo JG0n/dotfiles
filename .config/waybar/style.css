@@ -1,15 +1,15 @@
 @import "themes/catppuccin/mocha.css";
 
 * {
-	font-family: FantasqueSansMono Nerd Font;
-	font-size: 14px;
+	font-family: HackNerdFont;
+	font-size: 16px;
 	min-height: 0;
 }
 
 #waybar {
 	background: transparent;
 	color: @text;
-	margin: 5px 5px;
+	/* margin: 5px 5px; */
 }
 
 /*#workspaces {*/
@@ -38,8 +38,8 @@
 
 #workspaces {
 	background: @crust;
-	margin: 5px 1px 6px 1px;
-	padding: 0.1rem 1rem;
+	margin: 5px 1px 0px 1px;
+	padding: 0.1rem 0.4rem 0.1rem 0.8rem;
 	border-radius: 10px;
 	border: 0px;
 	font-weight: bold;
@@ -51,7 +51,7 @@
 
 #workspaces button {
 	all: unset;
-	padding: 0.5rem 0.5rem;
+	padding: 0.5rem 0.2rem;
 	color: @surface1;
 	transition: all .2s ease;
 }
@@ -101,7 +101,7 @@
 #network {
 	background-color: @crust;
 	padding: 0.1rem 1rem;
-	margin: 5px 0;
+	margin: 5px 0 0 0;
 }
 
 
