@@ -1,0 +1,17 @@
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
+
+refresh-on-startup yes
+reload-threads 100
+
+
+browser "app.zen_browser.zen  %u"
+
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+
+bind-key H prev-feed
+bind-key L next-feed
+bind-key g home
+bind-key G end
