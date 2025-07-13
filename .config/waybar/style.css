@@ -156,10 +156,13 @@
 #custom-music {
 	color: @mauve;
 	border-radius: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #custom-lock {
 	border-radius: 10px 0px 0px 10px;
+	margin-left: 5px;
 	color: @lavender;
 }
 
