@@ -30,8 +30,8 @@ rdialog () {
 
 case "$chosen" in
     "$shutdown") 
-        poweroff;;
-    "$reboot") reboot;;
+        systemctl poweroff;;
+    "$reboot") systemctl reboot;;
     "$lock") hyprlock;;
     "$suspend") 
         systemctl suspend;;
