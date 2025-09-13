@@ -29,7 +29,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
-alias foundryvtt="foundry/foundryvtt/foundryvtt"
+alias foundryvtt="~/foundry/foundryvtt/foundryvtt"
 alias p="sudo pacman"
 alias gittree="git log --all --decorate --oneline --graph"
 alias dolphin="dolphin ./ & disown"
