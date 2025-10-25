@@ -22,6 +22,7 @@ PATH="$PATH:/home/jose/.dotnet/tools"
 export PATH
 
 MANGOHUD=1
+XDG_MENU_PREFIX=plasma-
 
 # Sintax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
