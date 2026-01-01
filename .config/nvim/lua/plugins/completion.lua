@@ -70,21 +70,21 @@ return {
 				}, {
 					{ name = 'buffer' },
 				}),
-				sorting = {
-					comparators = {
-						-- compare.score_offset, -- not good at all
-						cmp.config.compare.exact,
-						-- cmp.config.compare.kind,
-						cmp.config.compare.locality,
-						cmp.config.compare.recently_used,
-						cmp.config.compare.length,
-						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-						cmp.config.compare.offset,
-						cmp.config.compare.order,
-						-- cmp.config.compare.scopes, -- what?
-						-- cmp.config.compare.sort_text,
-					},
-				}
+				-- sorting = {
+				-- 	comparators = {
+				-- 		-- compare.score_offset, -- not good at all
+				-- 		cmp.config.compare.exact,
+				-- 		-- cmp.config.compare.kind,
+				-- 		cmp.config.compare.locality,
+				-- 		cmp.config.compare.recently_used,
+				-- 		cmp.config.compare.length,
+				-- 		cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+				-- 		cmp.config.compare.offset,
+				-- 		cmp.config.compare.order,
+				-- 		-- cmp.config.compare.scopes, -- what?
+				-- 		-- cmp.config.compare.sort_text,
+				-- 	},
+				-- }
 			})
 
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

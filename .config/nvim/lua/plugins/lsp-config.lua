@@ -16,7 +16,7 @@ return {
 
 			-- General LSP Config
 			local function lsp_formatting(client, bufnr)
-				if client.supports_method("textDocument/formatting") then
+				if client:supports_method("textDocument/formatting") then
 					local params = util.make_formatting_params({})
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						callback = function()
@@ -130,7 +130,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"gopls",
-					"basedpyright",
 					"ts_ls", "eslint",
 					"hyprls",
 					"html", "emmet_ls", "cssls", "tailwindcss",
