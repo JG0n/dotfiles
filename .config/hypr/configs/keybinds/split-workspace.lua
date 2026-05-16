@@ -2,10 +2,10 @@
 local smw = hl.plugin.split_monitor_workspaces
 
 -- Switch workspaces with MainMod + [1-5]
-for i = 1, 10 do
+for i = 0, 9 do
 	local key = tostring(i)
-	hl.bind(MainMod .. " + " .. key, function() return smw.workspace(i) end)
-	hl.bind(MainMod .. " + SHIFT + " .. key, function() return smw.move_to_workspace_silent(i) end)
+	hl.bind(MainMod .. " + " .. key, function() return smw.workspace(i + 1) end)
+	hl.bind(MainMod .. " + SHIFT + " .. key, function() return smw.move_to_workspace(i + 1) end)
 end
 
 -- Scroll through existing workspaces with MainMod + scroll

@@ -42,7 +42,7 @@ hl.window_rule({ size = "20% 40%", match = { class = "(org.kde.plasmawindowed)" 
 -- Spawn rules
 
 -- Godot
-hl.window_rule({ tile = "on", match = { initial_class = "Godot" } })
+hl.window_rule({ tile = true, match = { initial_class = "Godot" } })
 
 -- Steam
 hl.window_rule({

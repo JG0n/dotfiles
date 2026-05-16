@@ -1,3 +1,3 @@
-require("rules.windows-appearance")
-require("rules.windows-workspaces")
-require("rules.general")
+require("configs.rules.windows-appearance")
+require("configs.rules.windows-workspaces")
+require("configs.rules.general")

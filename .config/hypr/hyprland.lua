@@ -40,6 +40,6 @@ require("configs.input")
 -- Enviormental variables
 require("configs.env")
 -- Theme
-require("themes.theme")
+require("configs.themes.theme")
 -- Plugins
 require("configs.split-workspaces")

@@ -29,10 +29,10 @@ local screenshotMonitor = "sh $HOME/.config/hypr/configs/bin/screenshot_monitor"
 MainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Workspaces keybinds (comment out split workspaces if pluggin stops working)
-require("keybinds.split-workspace")
+require("configs.keybinds.split-workspace")
 -- require("keybinds.workspace")
-require("keybinds.focus")
-require("keybinds.layout")
+require("configs.keybinds.focus")
+require("configs.keybinds.layout")
 
 -- Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 hl.bind(MainMod .. " + Backspace", hl.dsp.exec_cmd(terminal))
