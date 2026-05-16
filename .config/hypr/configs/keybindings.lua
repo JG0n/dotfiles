@@ -36,7 +36,7 @@ require("configs.keybinds.layout")
 
 -- Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 hl.bind(MainMod .. " + Backspace", hl.dsp.exec_cmd(terminal))
-hl.bind(MainMod .. " + C", hl.dsp.window.close())
+hl.bind(MainMod .. " + Q", hl.dsp.window.close())
 -- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(MainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("ALT + DELETE", hl.dsp.exec_cmd(lock))
