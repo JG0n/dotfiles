@@ -1,0 +1,43 @@
+-- Switch workspaces with MainMod + [0-9]
+hl.bind(MainMod .. " + 1", hl.dsp.window.move({ workspace = 1 }))
+hl.bind(MainMod .. " + 2", hl.dsp.window.move({ workspace = 2 }))
+hl.bind(MainMod .. " + 3", hl.dsp.window.move({ workspace = 3 }))
+hl.bind(MainMod .. " + 4", hl.dsp.window.move({ workspace = 4 }))
+hl.bind(MainMod .. " + 5", hl.dsp.window.move({ workspace = 5 }))
+hl.bind(MainMod .. " + 6", hl.dsp.window.move({ workspace = 6 }))
+hl.bind(MainMod .. " + 7", hl.dsp.window.move({ workspace = 7 }))
+hl.bind(MainMod .. " + 8", hl.dsp.window.move({ workspace = 8 }))
+hl.bind(MainMod .. " + 9", hl.dsp.window.move({ workspace = 9 }))
+hl.bind(MainMod .. " + 0", hl.dsp.window.move({ workspace = 10 }))
+
+-- Move active window to a workspace with MainMod + SHIFT + [0-9]
+
+-- Scroll through existing workspaces with MainMod + scroll
+hl.bind(MainMod .. " + mouse_down", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(MainMod .. " + mouse_up", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(MainMod .. " + CONTROL + h", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(MainMod .. " + CONTROL + l", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(MainMod .. " + CONTROL + k", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(MainMod .. " + CONTROL + j", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(MainMod .. " + page_up", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(MainMod .. " + page_down", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(MainMod .. " + CONTROL + page_up", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(MainMod .. " + CONTROL + page_down", hl.dsp.window.move({ workspace = "r-1" }))
+
+hl.bind(MainMod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
+hl.bind(MainMod .. " + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
+hl.bind(MainMod .. " + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
+hl.bind(MainMod .. " + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
+hl.bind(MainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
+hl.bind(MainMod .. " + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
+hl.bind(MainMod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
+hl.bind(MainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
+hl.bind(MainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
+hl.bind(MainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+
+hl.bind(MainMod .. " + SHIFT + page_up", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(MainMod .. " + SHIFT + page_down", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(MainMod .. " + SHIFT + h", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(MainMod .. " + SHIFT + l", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(MainMod .. " + SHIFT + k", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(MainMod .. " + SHIFT + j", hl.dsp.window.move({ workspace = "r-1" }))
