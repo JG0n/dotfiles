@@ -1,0 +1,25 @@
+#!/bin/bash
+# Global Git hook: post-checkout
+# Automatically copy .env files to new worktrees (including nested directories)
+# Skips gitignored directories (node_modules, vendor, dist, etc.)
+
+# Only run for worktree checkouts (not regular branch switches in main repo)
+# $3 = 1 means it's a branch checkout (not file checkout)
+if [ "$3" != "1" ]; then
+    exit 0
+fi
+
+# Get the common git directory (works for both main repo and worktrees)
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+MAIN_REPO=$(cd "$GIT_COMMON_DIR/.." && pwd)
+CURRENT_DIR=$(pwd)
+
+# If we're in a worktree (not the main repo), copy settings files
+if [ "$CURRENT_DIR" != "$MAIN_REPO" ]; then
+    echo "📋 Worktree detected: $CURRENT_DIR"
+
+	cp -u $MAIN_REPO/appsettings.Development.json $CURRENT_DIR/TPT.Redact/TPT.Redact.API/appsettings.Development.json
+	cp -u $MAIN_REPO/compose.override.yaml $CURRENT_DIR/TPT.Redact/compose.override.yaml
+
+    echo "✅ AppSettings files synced!"
+fi

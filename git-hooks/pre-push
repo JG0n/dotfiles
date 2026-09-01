@@ -1,0 +1,39 @@
+#!/bin/bash
+# Global Git hook: pre-push
+# Automatically run dotnet format scripts when new commits exist
+
+# Read the first line from stdin
+read local_ref local_sha remote_ref remote_sha
+
+# If stdin is empty, it means there are no new commits/refs to push
+if [ -z "$local_sha" ]; then
+    echo "No commits to push. Exiting hook early."
+    exit 0
+fi
+
+# Get the common git directory (works for both main repo and worktrees)
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+MAIN_REPO=$(cd "$GIT_COMMON_DIR/.." && pwd)
+CURRENT_DIR=$(pwd)
+SOLUTION_PATH=$CURRENT_DIR/TPT.Redact/TPT.Redact.slnx
+
+# If we're in a worktree (not the main repo), copy settings files
+if [ "$CURRENT_DIR" != "$MAIN_REPO" ]; then
+    echo "📋 Worktree detected: $CURRENT_DIR"
+
+	dotnet format style $SOLUTION_PATH --verify-no-changes
+	RESULT=$?
+
+	if [ $RESULT -ne 0 ]; then
+        echo "❌ Code analysis failed. Push aborted!"
+        exit 1
+    fi
+
+	dotnet format analyzers $SOLUTION_PATH --no-restore --verify-no-changes
+	RESULT=$?
+
+	if [ $RESULT -ne 0 ]; then
+        echo "❌ Code analysis failed. Push aborted!"
+        exit 1
+    fi
+fi
