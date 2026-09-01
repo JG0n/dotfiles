@@ -15,7 +15,7 @@ fi
 GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
 MAIN_REPO=$(cd "$GIT_COMMON_DIR/.." && pwd)
 CURRENT_DIR=$(pwd)
-SOLUTION_PATH=$CURRENT_DIR/TPT.Redact/TPT.Redact.slnx
+SOLUTION_PATH=$(find "$CURRENT_DIR" -type f -name "*.$slnx")
 
 # If we're in a worktree (not the main repo), copy settings files
 if [ "$CURRENT_DIR" != "$MAIN_REPO" ]; then
